@@ -1,7 +1,8 @@
 ---
-# tasks file for role-sample
+# tasks file for general.system.set-services
 - name: Debug
-  msg: "Role sample debug message"
+  ansible.builtin.debug:
+    msg: "Role sample debug message"
 
 - name: Get Init name
   shell: "ps -p 1 -o comm="
