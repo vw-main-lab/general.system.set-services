@@ -1,0 +1,12 @@
+---
+# tasks file for role-sample
+- name: Debug
+  msg: "Role sample debug message"
+
+- name: Get Init name
+  shell: "ps -p 1 -o comm="
+  register: set_services_init
+
+- name: Set Systemd services
+  include_tasks: "set_services_{{ set_services_init.stdout }}.yml"
+  when: set_services_init.stdout != ""

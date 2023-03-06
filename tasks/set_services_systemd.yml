@@ -1,0 +1,4 @@
+---
+- name: "Debug systemd"
+  ansible.builtin.debug:
+    msg: "Systemd create service"

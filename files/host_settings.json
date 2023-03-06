@@ -1,0 +1,40 @@
+{
+  "network": {
+  },
+  "hostkeys": {
+  },
+  "users": [
+  ],
+  "groups": "",
+  "applications": {
+  },
+  "services": [
+    {
+      "description": "Service description",
+      "requires": "root",
+      "before": [],
+      "after": [
+        "Network.target"
+      ],
+      "type": "",
+      "remainafterexist": true,
+      "execstart": "",
+      "execstop": "",
+      "wantedby": ""
+    }
+  ]
+}
+
+[Unit]
+Description=Force ens5f5 ethernet interface to 100Mbps
+Requires=Network.target
+After=Network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/ethtool -s ens5f5 wol d
+ExecStop=/usr/sbin/ethtool -s ens5f5 wol g
+
+[Install]
+WantedBy=multi-user.target
